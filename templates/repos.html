@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Repositórios</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+    <h1>📁 Repositórios</h1>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h3>Adicionar repositório</h3>
+        <input type="text" placeholder="usuario/repositorio">
+        <button>Adicionar</button>
+    </div>
+
+    <div class="card">
+        <h3>Lista</h3>
+        <ul>
+            {% for repo in repos %}
+                <li>{{ repo }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <a href="/dashboard">⬅ Voltar</a>
+
+</div>
+
+</body>
+</html>
