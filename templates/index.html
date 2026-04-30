@@ -1,33 +1,51 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="pt-BR">
 <head>
-    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | DevPulse AI</title>
     <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
 
-    <header>
-        <h1>🚀 DevPulse Dashboard</h1>
-    </header>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/static/images/Devpulse.png" alt="DevPulse Logo" style="height: 40px; width: auto;">
+        </div>
+        <div class="nav-links">
+            <a href="/dashboard" class="active">Dashboard</a>
+            <a href="/repos">Repositórios</a>
+            <a href="/report">Relatórios</a>
+        </div>
+    </nav>
 
     <div class="container">
-
-        <div class="card">
-            <h2>📁 Repositórios</h2>
-            <p>Gerencie e visualize seus repositórios monitorados.</p>
-            <a href="/repos"><button>Acessar</button></a>
+        <div class="page-header">
+            <h1>Visão Geral</h1>
+            <p>Monitore a saúde e a qualidade de seus projetos com IA.</p>
         </div>
 
-        <div class="card">
-            <h2>📄 Relatórios</h2>
-            <p>Veja análises de qualidade de código.</p>
-            <a href="/report"><button>Ver Relatórios</button></a>
-        </div>
+        <div class="grid">
+            <div class="card">
+                <h2><i class="fa-solid fa-code-branch text-primary"></i> Repositórios</h2>
+                <p>Gerencie, adicione e visualize todos os seus repositórios monitorados em tempo real.</p>
+                <a href="/repos" class="btn"><i class="fa-solid fa-list"></i> Acessar Repositórios</a>
+            </div>
 
+            <div class="card">
+                <h2><i class="fa-solid fa-chart-pie text-accent"></i> Relatórios de Qualidade</h2>
+                <p>Acesse análises detalhadas geradas por IA sobre a qualidade do seu código e sugestões de melhoria.</p>
+                <a href="/report" class="btn"><i class="fa-solid fa-magnifying-glass-chart"></i> Ver Relatórios</a>
+            </div>
+
+            <div class="card">
+                <h2><i class="fa-solid fa-robot" style="color: #8b5cf6;"></i> Análise Automática</h2>
+                <p>Nossos agentes de IA analisam continuamente seus commits para identificar débitos técnicos.</p>
+                <a href="#" class="btn btn-secondary"><i class="fa-solid fa-gear"></i> Configurações</a>
+            </div>
+        </div>
     </div>
 
 </body>
-
 </html>

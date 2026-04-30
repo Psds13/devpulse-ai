@@ -1,35 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>Repositórios</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repositórios | DevPulse AI</title>
     <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<header>
-    <h1>📁 Repositórios</h1>
-</header>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/static/images/Devpulse.png" alt="DevPulse Logo" style="height: 40px; width: auto;">
+        </div>
+        <div class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/repos" class="active">Repositórios</a>
+            <a href="/report">Relatórios</a>
+        </div>
+    </nav>
 
-<div class="container">
+    <div class="container">
+        <div class="page-header">
+            <h1>Repositórios Monitorados</h1>
+            <p>Adicione novos repositórios ou gerencie os projetos ativos.</p>
+        </div>
 
-    <div class="card">
-        <h3>Adicionar repositório</h3>
-        <input type="text" placeholder="usuario/repositorio">
-        <button>Adicionar</button>
+        <div class="grid" style="grid-template-columns: 1fr; max-width: 800px; margin: 0 auto;">
+            
+            <div class="card">
+                <h2><i class="fa-solid fa-plus-circle"></i> Adicionar Repositório</h2>
+                <p>Informe o formato <strong>usuario/repositorio</strong> do GitHub para começar a análise.</p>
+                {% if error %}
+                <div style="background: rgba(239,68,68,0.12); border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin-bottom: 14px; color: #fca5a5; display: flex; gap: 10px; align-items: center;">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    {{ error }}
+                </div>
+                {% endif %}
+                <form class="input-group" action="/api/repos" method="POST">
+                    <input type="text" name="repo_url" placeholder="Ex: facebook/react" value="{{ repo_input or '' }}" required>
+                    <button type="submit" class="btn"><i class="fa-solid fa-cloud-arrow-down"></i> Adicionar</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2><i class="fa-solid fa-list-check"></i> Seus Projetos</h2>
+                <ul class="repo-list">
+                    {% for repo in repos %}
+                    <li>
+                        <div class="repo-name">
+                            <i class="fa-brands fa-github fa-lg"></i>
+                            {{ repo }}
+                        </div>
+                        <div class="actions">
+                            <span class="status-badge"><i class="fa-solid fa-check"></i> Ativo</span>
+                        </div>
+                    </li>
+                    {% else %}
+                    <li style="color: var(--text-muted); justify-content: center;">Nenhum repositório encontrado.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
     </div>
-
-    <div class="card">
-        <h3>Lista</h3>
-        <ul>
-            {% for repo in repos %}
-                <li>{{ repo }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-
-    <a href="/dashboard">⬅ Voltar</a>
-
-</div>
 
 </body>
 </html>

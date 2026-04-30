@@ -1,34 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>Relatório</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Qualidade | DevPulse AI</title>
     <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<header>
-    <h1>📄 Relatório</h1>
-</header>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/static/images/Devpulse.png" alt="DevPulse Logo" style="height: 40px; width: auto;">
+        </div>
+        <div class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/repos">Repositórios</a>
+            <a href="/report" class="active">Relatórios</a>
+        </div>
+    </nav>
 
-<div class="container">
+    <div class="container">
+        <a href="/dashboard" class="btn btn-secondary" style="margin-bottom: 20px;"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
+        
+        <div class="page-header">
+            <h1>Análise de Qualidade</h1>
+            <p>Relatório gerado pela IA com métricas e problemas detectados.</p>
+        </div>
 
-    <div class="card">
-        <h2>Score de Qualidade</h2>
-        <p style="font-size: 24px;">{{ report.score }}</p>
+        <div class="grid">
+            <div class="card" style="text-align: center;">
+                <h2><i class="fa-solid fa-ranking-star"></i> Score de Saúde</h2>
+                <p>Pontuação geral do repositório avaliado</p>
+                <div class="score-container">
+                    <div class="score-circle">
+                        {{ report.score }}
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--accent);"><i class="fa-solid fa-arrow-up-right-dots"></i> Desempenho excelente</p>
+            </div>
+
+            <div class="card">
+                <h2><i class="fa-solid fa-triangle-exclamation" style="color: #ef4444;"></i> Problemas Encontrados</h2>
+                <p>Débitos técnicos e vulnerabilidades que precisam da sua atenção:</p>
+                <ul class="issues-list">
+                    {% for issue in report.issues %}
+                    <li><i class="fa-solid fa-bug"></i> {{ issue }}</li>
+                    {% else %}
+                    <li style="background: rgba(16, 185, 129, 0.1); border-color: var(--accent); color: var(--accent);">
+                        <i class="fa-solid fa-check-double"></i> Nenhum problema encontrado! Código limpo.
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
     </div>
-
-    <div class="card">
-        <h3>Problemas encontrados</h3>
-        <ul>
-            {% for issue in report.issues %}
-                <li>{{ issue }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-
-    <a href="/dashboard">⬅ Voltar</a>
-
-</div>
 
 </body>
 </html>

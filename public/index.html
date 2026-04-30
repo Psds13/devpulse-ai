@@ -1,12 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>DevPulse</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevPulse AI | Qualidade de Código Reimaginada</title>
+    <meta name="description" content="DevPulse analisa seus repositórios no GitHub, identifica bugs ocultos e sugere refatorações em tempo real.">
+    <link rel="stylesheet" href="/static/landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <h1>🚀 DevPulse</h1>
-    <p>Sistema de análise de código com IA</p>
 
-    <a href="/dashboard">Entrar no sistema</a>
+    <!-- Gradients Background -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/static/images/Devpulse.png" alt="DevPulse Logo" style="height: 40px; width: auto;">
+        </div>
+        <div class="nav-links">
+            <a href="#features">Recursos</a>
+            <a href="#how-it-works">Como Funciona</a>
+            <a href="#pricing">Preços</a>
+        </div>
+        <a href="/dashboard" class="btn btn-outline">Entrar no Sistema</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Eleve a Qualidade do seu Código com Inteligência Artificial.</h1>
+            <p>O DevPulse se integra ao seu GitHub para encontrar bugs complexos, débitos técnicos e sugerir refatorações usando agentes de IA avançados antes que cheguem à produção.</p>
+            <div class="hero-buttons">
+                <a href="/dashboard" class="btn btn-primary">Começar Gratuitamente <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+                <a href="#features" class="btn btn-outline">Conheça mais</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <!-- Glow behind image -->
+            <div style="position:absolute; width: 80%; height: 80%; background: var(--primary); filter: blur(100px); opacity: 0.3; z-index: 1; top: 10%; left: 10%; border-radius: 50%;"></div>
+            <img src="/static/images/hero.png" alt="Inteligência Artificial analisando código">
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <h2 class="section-title">A Vantagem do DevPulse</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-brain feature-icon"></i>
+                <h3>Agentes de IA Treinados</h3>
+                <p>Nossos modelos examinam padrões de código buscando ineficiências e vulnerabilidades que ferramentas comuns não conseguem identificar.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-brands fa-github feature-icon"></i>
+                <h3>Integração Transparente</h3>
+                <p>Conecte seu repositório com 1 clique. O DevPulse roda em paralelo com seu fluxo de trabalho, sem atrasar seus deployments.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-chart-line feature-icon"></i>
+                <h3>Relatórios Dinâmicos</h3>
+                <p>Receba pontuações de saúde do código, alertas detalhados e sugestões de correção prontas para aplicar nos seus PRs.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <h2 class="section-title">Como Funciona</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Conecte seu Repositório</h3>
+                <p>Insira a URL do seu GitHub. O DevPulse clonará o código de forma segura e iniciará a varredura instantaneamente.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Análise por IA</h3>
+                <p>Nossos agentes de linguagem natural avaliam a arquitetura, segurança e complexidade ciclomática do seu projeto.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Receba Refatorações</h3>
+                <p>Acesse o relatório completo com trechos de código refatorados, prontos para serem copiados ou aplicados no seu projeto.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <h2 class="section-title">Preços Simples</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Starter</h3>
+                <div class="price">Grátis</div>
+                <ul class="pricing-features">
+                    <li><i class="fa-solid fa-check"></i> Até 3 repositórios públicos</li>
+                    <li><i class="fa-solid fa-check"></i> Análises semanais</li>
+                    <li><i class="fa-solid fa-check"></i> Score de Qualidade</li>
+                </ul>
+                <a href="/dashboard" class="btn btn-outline" style="width: 100%; margin-top: 20px;">Começar Grátis</a>
+            </div>
+            <div class="pricing-card featured">
+                <div class="badge">Mais Popular</div>
+                <h3>Pro</h3>
+                <div class="price">R$ 49<span>/mês</span></div>
+                <ul class="pricing-features">
+                    <li><i class="fa-solid fa-check"></i> Repositórios Ilimitados</li>
+                    <li><i class="fa-solid fa-check"></i> Repositórios Privados</li>
+                    <li><i class="fa-solid fa-check"></i> Análises em tempo real</li>
+                    <li><i class="fa-solid fa-check"></i> Refatoração com IA Avançada</li>
+                </ul>
+                <a href="/dashboard" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Assinar Pro</a>
+            </div>
+            <div class="pricing-card">
+                <h3>Enterprise</h3>
+                <div class="price">Custom</div>
+                <ul class="pricing-features">
+                    <li><i class="fa-solid fa-check"></i> Tudo do Pro</li>
+                    <li><i class="fa-solid fa-check"></i> Agentes IA Customizados</li>
+                    <li><i class="fa-solid fa-check"></i> Suporte Prioritário</li>
+                    <li><i class="fa-solid fa-check"></i> Deploy On-Premise</li>
+                </ul>
+                <a href="/dashboard" class="btn btn-outline" style="width: 100%; margin-top: 20px;">Falar com Vendas</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Pronto para escrever código impecável?</h2>
+        <p>Junte-se a desenvolvedores de elite que já aceleraram sua qualidade e produtividade.</p>
+        <a href="/dashboard" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 40px;">
+            Acessar o Dashboard <i class="fa-solid fa-terminal" style="margin-left: 10px;"></i>
+        </a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 DevPulse AI. Todos os direitos reservados. Construído com paixão e IA.</p>
+    </footer>
+
 </body>
 </html>
