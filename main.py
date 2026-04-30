@@ -90,6 +90,21 @@ def root():
     return HTMLResponse("<h1>DevPulse rodando 🚀</h1>")
 
 
+# 🔍 Rota de diagnóstico — REMOVER após resolver o problema
+@app.get("/debug", response_class=HTMLResponse)
+def debug_env():
+    from database.config import DATABASE_URL
+    db_url = DATABASE_URL or "NÃO DEFINIDA"
+    # Esconde a senha da URL para exibição segura
+    import re
+    db_url_safe = re.sub(r"://([^:]+):([^@]+)@", r"://\1:****@", db_url)
+    use_sqlite = os.getenv("USE_SQLITE", "NÃO DEFINIDA")
+    return HTMLResponse(f"""
+        <h2>🔍 Debug de Ambiente</h2>
+        <p><b>USE_SQLITE:</b> {use_sqlite}</p>
+        <p><b>DATABASE_URL:</b> {db_url_safe}</p>
+    """)
+
 # Dashboard principal
 @app.get("/dashboard", response_class=HTMLResponse)
 def dashboard(request: Request):
