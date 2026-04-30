@@ -104,16 +104,19 @@ def dashboard(request: Request):
 # Página de repositórios
 @app.get("/repos", response_class=HTMLResponse)
 def repos_page(request: Request, db: Session = Depends(get_db)):
-    db_repos = db.query(Repository).all()
-    repos_list = [f"{repo.owner}/{repo.name}" if repo.owner and repo.name else repo.url for repo in db_repos]
-
     try:
+        db_repos = db.query(Repository).all()
+        repos_list = [f"{repo.owner}/{repo.name}" if repo.owner and repo.name else repo.url for repo in db_repos]
         return templates.TemplateResponse(request=request, name="repos.html", context={
             "request": request,
             "repos": repos_list
         })
     except Exception as e:
-        return HTMLResponse(f"<h1>Erro em repos</h1><p>{e}</p>")
+        import traceback
+        return HTMLResponse(
+            f"<h1>Erro em /repos</h1><pre>{traceback.format_exc()}</pre>",
+            status_code=500
+        )
 
 
 @app.post("/api/repos")
