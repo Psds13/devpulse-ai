@@ -6,13 +6,21 @@ from dotenv import load_dotenv
 # Garante que o .env seja lido antes de acessar as variáveis
 load_dotenv()
 
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost/devpulse")
-
 # fallback for local development if postgres isn't running is sqlite
 if os.getenv("USE_SQLITE", "true").lower() == "true":
     DATABASE_URL = "sqlite:///./devpulse.db"
+else:
+    DATABASE_URL = os.getenv("DATABASE_URL", "")
 
-# connect_args for sqlite
+    if not DATABASE_URL:
+        raise RuntimeError("DATABASE_URL não definida. Configure a variável de ambiente no Render.")
+
+    # ⚠️ Fix necessário para o Render: ele gera URLs com "postgres://"
+    # mas o SQLAlchemy 1.4+ exige "postgresql://"
+    if DATABASE_URL.startswith("postgres://"):
+        DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
+# connect_args apenas necessário para SQLite
 connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
 
 engine = create_engine(DATABASE_URL, connect_args=connect_args)
